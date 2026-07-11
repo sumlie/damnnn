@@ -1,0 +1,20 @@
+import { defineConfig } from "@rsbuild/core";
+import { pluginReact } from "@rsbuild/plugin-react";
+import { pluginTailwindcss } from "@rsbuild/plugin-tailwindcss";
+
+export default defineConfig({
+  html: {
+    title: "damnnn",
+  },
+  output: {
+    distPath: {
+      root: "../dist",
+    },
+  },
+  plugins: [pluginReact(), pluginTailwindcss()],
+  source: {
+    entry: {
+      index: "./src/app/app.tsx",
+    },
+  },
+});
