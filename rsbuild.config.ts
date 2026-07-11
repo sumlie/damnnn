@@ -12,4 +12,9 @@ export default defineConfig({
     },
   },
   plugins: [pluginReact(), pluginTailwindcss()],
+  source: {
+    entry: {
+      index: "./src/app/app.tsx",
+    },
+  },
 });
