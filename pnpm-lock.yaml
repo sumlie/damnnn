@@ -39,6 +39,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.1.6
         version: 19.2.3(@types/react@19.2.17)
+      atlas-fonts:
+        specifier: ^1.2.1
+        version: 1.2.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       oxfmt:
         specifier: ^0.58.0
         version: 0.58.0
@@ -641,6 +644,17 @@ packages:
   '@types/react@19.2.17':
     resolution: {integrity: sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw==}
 
+  atlas-fonts@1.2.1:
+    resolution: {integrity: sha512-ABcZDDAx7AjI6Q9gkHYTwPzDdiCG/HgIzO8a8v424IclWFY9IEmesogFbLX37QChTfC2t8DpPO+CMf3PDHNNXw==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
@@ -1192,6 +1206,11 @@ snapshots:
   '@types/react@19.2.17':
     dependencies:
       csstype: 3.2.3
+
+  atlas-fonts@1.2.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    optionalDependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
 
   csstype@3.2.3: {}
 
