@@ -1,9 +1,9 @@
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
 
 import { cn } from "@/shared/lib/cn";
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
-        "icon-sm": "h-6 w-6 rounded-sm"
+        "icon-sm": "h-6 w-6 rounded-sm",
       },
     },
     defaultVariants: {
@@ -34,26 +34,17 @@ const buttonVariants = cva(
   },
 );
 
-interface ButtonProps
-  extends
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
-  ref?: React.Ref<HTMLButtonElement>;
-}
-
-const Button = ({
+export function Button({
   className,
-  variant,
-  size,
-  ref,
+  variant = "default",
+  size = "default",
   ...props
-}: ButtonProps) => (
-  <button
-    className={cn(buttonVariants({ variant, size, className }))}
-    ref={ref}
-    {...props}
-  />
-);
-Button.displayName = "Button";
-
-export { Button, buttonVariants };
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  return (
+    <ButtonPrimitive
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+}

@@ -1,3 +1,4 @@
+import { Input as InputPrimitive } from "@base-ui/react/input";
 import * as React from "react";
 
 import { cn } from "@/shared/lib/cn";
@@ -8,7 +9,7 @@ export function Input({
   ...props
 }: React.ComponentProps<"input">) {
   return (
-    <input
+    <InputPrimitive
       type={type}
       data-slot="input"
       className={cn(
