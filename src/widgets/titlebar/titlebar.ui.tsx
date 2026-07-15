@@ -1,8 +1,6 @@
-import {
-  TitlebarControls,
-  TitlebarAddressField,
-  TitlebarNavigation,
-} from "./";
+import { TitlebarAddressField } from "./address-field";
+
+import { TitlebarControls, TitlebarNavigation } from "./";
 
 export function Titlebar() {
   return (
