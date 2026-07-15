@@ -1,27 +1,47 @@
 import {
   ShieldCheckIcon,
   ClipboardIcon,
+  CheckIcon,
   ArrowUturnRightIcon,
 } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
+import { openUrl } from "@tauri-apps/plugin-opener";
 
 import { copyToClipboard } from "@/shared/lib/clipboard";
+import { useCopyFeedback } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/shared/ui/tooltip";
 
 export function TitlebarAddressField() {
   const [url, setUrl] = useState("https://soundcloud.com");
-  const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleCopy = async () => {
-    if (!inputRef.current) return;
+  const { copied, notifyCopied } = useCopyFeedback(1200);
 
-    const success = await copyToClipboard(inputRef.current.value);
+  const handleCopy = async () => {
+    const value = inputRef.current?.value;
+    if (!value) return;
+
+    const success = await copyToClipboard(value);
 
     if (success) {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      notifyCopied();
+    }
+  };
+
+  const handleOpenInBrowser = async () => {
+    const value = inputRef.current?.value;
+    if (!value) return;
+
+    try {
+      await openUrl(value);
+    } catch (error) {
+      console.error("Failed to open URL:", error);
     }
   };
 
@@ -34,6 +54,7 @@ export function TitlebarAddressField() {
         type="text"
         className="text-muted-foreground focus:text-foreground h-full w-full pr-14 pl-7 font-sans"
       />
+
       <Button
         variant="ghost"
         size="icon-sm"
@@ -43,17 +64,41 @@ export function TitlebarAddressField() {
       </Button>
 
       <div className="absolute top-1/2 right-1 flex -translate-y-1/2 items-center gap-1">
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={handleCopy}
-          title={isCopied ? "Copied!" : "Copy URL"}
-        >
-          <ClipboardIcon className="text-muted-foreground scale-95" />
-        </Button>
-        <Button variant="ghost" size="icon-sm">
-          <ArrowUturnRightIcon className="text-muted-foreground scale-95" />
-        </Button>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                onClick={handleCopy}
+              >
+                {copied ? (
+                  <CheckIcon className="text-primary scale-95" />
+                ) : (
+                  <ClipboardIcon className="text-muted-foreground scale-95" />
+                )}
+              </Button>
+            }
+          />
+          <TooltipContent>
+            {copied ? "Copied!" : "Copy"}
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                onClick={handleOpenInBrowser}
+              >
+                <ArrowUturnRightIcon className="text-muted-foreground scale-95" />
+              </Button>
+            }
+          />
+          <TooltipContent>Open in browser</TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );
