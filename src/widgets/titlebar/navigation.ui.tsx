@@ -9,7 +9,7 @@ import {
 
 export function TitlebarNavigation() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="relative z-10 flex items-center gap-2">
       <div>
         <p className="text-heading text-sm tracking-wide">Damnnn</p>
       </div>

@@ -12,7 +12,7 @@ export function TitlebarAddressField() {
   const [url, setUrl] = useState("https://soundcloud.com");
 
   return (
-    <div className="relative h-7 w-1/2">
+    <div className="relative z-10 h-7 w-1/2">
       <Input
         value={url}
         onChange={(e) => setUrl(e.target.value)}

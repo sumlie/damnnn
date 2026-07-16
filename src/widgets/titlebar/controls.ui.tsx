@@ -23,7 +23,7 @@ export function TitlebarControls() {
   };
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="relative z-10 flex items-center gap-1">
       <Button
         variant="ghost"
         size="icon-sm"
