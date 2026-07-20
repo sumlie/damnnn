@@ -9,10 +9,26 @@ import {
 
 export function TitlebarNavigation() {
   return (
-    <div className="relative z-10 flex items-center gap-2">
-      <div>
-        <p className="text-heading text-sm tracking-wide">Damnnn</p>
-      </div>
+    <div className="relative z-10 flex items-center gap-1">
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="sm"
+              className="flex items-center gap-1.5 px-2"
+            >
+              <img src="/logo.svg" width={16} height={16} />
+              <p className="text-heading text-sm tracking-wide">
+                Damnnn
+              </p>
+            </Button>
+          }
+        />
+        <TooltipContent>
+          Go Home
+        </TooltipContent>
+      </Tooltip>
       <div className="flex items-center gap-1">
         <Tooltip>
           <TooltipTrigger
