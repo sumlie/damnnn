@@ -13,6 +13,7 @@
     "windows": [
       {
         "title": "damnnn",
+        "decorations": false,
         "width": 1200,
         "height": 700,
         "minWidth": 1024,
