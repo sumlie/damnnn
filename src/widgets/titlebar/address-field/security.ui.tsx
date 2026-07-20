@@ -6,14 +6,13 @@ import {
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Button } from "@/shared/ui/button";
 
+import { Button } from "@/shared/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/shared/ui/popover";
-
 import {
   Tooltip,
   TooltipContent,
@@ -23,7 +22,7 @@ import {
 
 export function AddressFieldSecurity() {
   return (
-    <TooltipProvider delay={300}> {/* чуть больше delay */}
+    <TooltipProvider delay={300}>
       <Tooltip>
         <Popover>
           <PopoverTrigger
@@ -41,8 +40,11 @@ export function AddressFieldSecurity() {
               />
             }
           />
-
-          <PopoverContent className="w-80 p-4" align="start" side="bottom">
+          <PopoverContent
+            className="w-80 p-4"
+            align="start"
+            side="bottom"
+          >
             <div className="space-y-4">
               <div>
                 <h3 className="text-sm font-semibold">Security</h3>
@@ -50,7 +52,6 @@ export function AddressFieldSecurity() {
                   Your data stays private while using the application.
                 </p>
               </div>
-
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
                   <CheckIcon className="text-primary size-4" />
@@ -69,9 +70,10 @@ export function AddressFieldSecurity() {
                   <span>Open-source application</span>
                 </li>
               </ul>
-
               <Button
-                onClick={() => openUrl("https://github.com/sumlie/damnnn")}
+                onClick={() =>
+                  openUrl("https://github.com/sumlie/damnnn")
+                }
                 variant="link"
                 size="sm-compact"
               >
@@ -81,10 +83,7 @@ export function AddressFieldSecurity() {
             </div>
           </PopoverContent>
         </Popover>
-
-        <TooltipContent>
-          Security
-        </TooltipContent>
+        <TooltipContent>Security</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );

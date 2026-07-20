@@ -25,9 +25,7 @@ export function TitlebarNavigation() {
             </Button>
           }
         />
-        <TooltipContent>
-          Go Home
-        </TooltipContent>
+        <TooltipContent>Go Home</TooltipContent>
       </Tooltip>
       <div className="flex items-center gap-1">
         <Tooltip>

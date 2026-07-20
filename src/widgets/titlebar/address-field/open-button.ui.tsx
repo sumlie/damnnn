@@ -8,11 +8,7 @@ import {
   TooltipContent,
 } from "@/shared/ui/tooltip";
 
-export function AddressFieldOpenButton({
-  value,
-}: {
-  value: string;
-}) {
+export function AddressFieldOpenButton({ value }: { value: string }) {
   const handleOpenInBrowser = async () => {
     if (!value) return;
 

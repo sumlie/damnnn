@@ -1,4 +1,7 @@
-import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
+import {
+  CheckIcon,
+  ClipboardIcon,
+} from "@heroicons/react/24/outline";
 
 import { copyToClipboard } from "@/shared/lib/clipboard";
 import { useCopyFeedback } from "@/shared/lib/hooks";
