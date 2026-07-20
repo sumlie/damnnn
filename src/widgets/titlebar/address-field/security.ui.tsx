@@ -62,7 +62,7 @@ export function AddressFieldSecurity() {
               openUrl("https://github.com/sumlie/damnnn")
             }
             variant="link"
-            className="p-0"
+            size="sm-compact"
           >
             Learn more
             <ArrowTopRightOnSquareIcon className="size-4" />
