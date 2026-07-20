@@ -6,6 +6,11 @@ import {
 import { getCurrentWindow } from "@tauri-apps/api/window";
 
 import { Button } from "@/shared/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/shared/ui/tooltip";
 
 export function TitlebarControls() {
   const appWindow = getCurrentWindow();
@@ -24,23 +29,49 @@ export function TitlebarControls() {
 
   return (
     <div className="relative z-10 flex items-center gap-1">
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        onClick={handleMinimalize}
-      >
-        <MinusIcon />
-      </Button>
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        onClick={handleToggleMaximize}
-      >
-        <ArrowsPointingOutIcon className="scale-90" />
-      </Button>
-      <Button variant="ghost" size="icon-sm" onClick={handleClose}>
-        <XMarkIcon className="scale-115" />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              onClick={handleMinimalize}
+            >
+              <MinusIcon />
+            </Button>
+          }
+        />
+        <TooltipContent>Minimize</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              onClick={handleToggleMaximize}
+            >
+              <ArrowsPointingOutIcon className="scale-90" />
+            </Button>
+          }
+        />
+        <TooltipContent>Maximize</TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              onClick={handleClose}
+            >
+              <XMarkIcon className="scale-115" />
+            </Button>
+          }
+        />
+        <TooltipContent>Close</TooltipContent>
+      </Tooltip>
     </div>
   );
 }
